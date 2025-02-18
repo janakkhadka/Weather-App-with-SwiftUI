@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isSearching: Bool = false
+    @State private var searchTextField: String = ""
+    @State private var searchText: String = "Kathmandu, Nepal"
     
     var body: some View {
         GeometryReader { geometry in  //GeometryReader le chai parent view vannale yaa chai Content view ko size and position reads garera adjust garna help garxa
@@ -50,28 +53,53 @@ struct ContentView: View {
                                                 }
                                                 
                                             }
-                                            .padding(.top,0.1)
+                                            
                                             
                                             Spacer()
                                             
                                             HStack {
-              
-                                                    Image(systemName: "cloud.bolt.fill")
-                                                        .foregroundColor(.white)
-                                                        .padding(.trailing)
-                                                        .font(.system(size:68, weight: .bold))
+                                                Image(systemName: "cloud.bolt.fill")
+                                                    .foregroundColor(.white)
+                                                    .padding(.trailing)
+                                                    .font(.system(size:68, weight: .bold))
                                                 
                                             }
                                         }
                                         
                                         
                                         Spacer()
+                                        
                                         HStack {
-                                            Text("Kathmandu, Nepal")
-                                                .font(.system(size: 20, weight: .bold))
-                                                .padding(.leading)
-                                                .opacity(0.6)
+                                            if !isSearching {
+                                                Text("\(searchText)")
+                                                    .font(.system(size: 20, weight: .bold))
+                                                    .padding(.leading)
+                                                    .opacity(0.6)
+                                                    .frame(height: 40)
+                                            } else {
+                                                TextField("Type a message...", text: $searchTextField)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .padding()
+                                                    .background(.opacity(0))
+                                                    .frame(height: 40)
+                                                    .foregroundColor(.black)
+                                            }
+                                            
                                             Spacer()
+                                            
+                                            Button(action: {
+                                                if(isSearching){
+                                                    searchText = searchTextField
+                                                }else {
+                                                    searchTextField = ""
+                                                }
+                                                isSearching.toggle()
+                                            }){
+                                                Image(systemName: "magnifyingglass")
+                                                    .foregroundColor(.white)
+                                                    .padding(.trailing)
+                                                    .font(.system(size:25, weight: .bold))
+                                            }
                                         }
                                         Spacer()
                                     }
@@ -82,10 +110,161 @@ struct ContentView: View {
                                 .shadow(color: .black.opacity(0.5), radius: 10)
                             
                         )
+                    
+                    //talako section
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Text("58\u{00B0}F")
+                                .font(.system(size: 55, weight: .bold))
+                                .padding(.leading)
+                            
+                            Spacer()
+                            
+                            Text("62\u{00B0}F")
+                                .font(.system(size: 55, weight: .bold))
+                                .padding(.leading)
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Spacer()
+                            Text("LOW")
+                                .font(.system(size: 20, weight: .bold))
+                                .padding(.leading)
+                                .opacity(0.5)
+                            
+                            Spacer()
+                            Spacer()
+                            
+                            Text("HIGH")
+                                .font(.system(size: 20, weight: .bold))
+                                .padding(.leading)
+                                .opacity(0.5)
+                            
+                            Spacer()
+                        }
+                        .padding(.bottom, 20)
+                        
+                        //arko section suru
+                        VStack{
+                            HStack {
+                                HStack {
+                                    Image(systemName: "wind")
+                                        .font(.system(size:34, weight: .bold))
+                                    
+                                    Text("WIND")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("6 MPH")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+                            
+                            Divider()
+                            
+                            HStack {
+                                HStack {
+                                    Image(systemName: "humidity")
+                                        .font(.system(size:30, weight: .bold))
+                                    
+                                    Text("HUMIDITY")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("55 %")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+                            
+                            Divider()
+                            
+                            HStack {
+                                HStack {
+                                    Image(systemName: "drop")
+                                        .font(.system(size:25, weight: .bold))
+                                        .padding(.horizontal, 5)
+                                    
+                                    Text("DEW POINT")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("50\u{00B0}")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+                            
+                            Divider()
+                            
+                            HStack {
+                                HStack {
+                                    Image(systemName: "arrow.down")
+                                        .font(.system(size:28, weight: .bold))
+                                        .padding(.horizontal, 3)
+                                    
+                                    Text("PRESSURE")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("30.01 In")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+                            
+                            Divider()
+                            
+                            HStack {
+                                HStack {
+                                    Image(systemName: "eye")
+                                        .font(.system(size:23, weight: .bold))
+                                    
+                                    Text("VISIBILITY")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("10.0 Mi")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+  
+                        }
+                        .padding(.horizontal)
+                        .background(.white)
+
+                    }
                 }
+                .background(.gray.opacity(0.2))
             }
         }
         .edgesIgnoringSafeArea(.top)
+        
+        
     }
 }
 
