@@ -38,6 +38,24 @@ class NetworkManager {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     print("Parsed JSON: \(json)")
                     
+                    //city vetayena vane
+                    if let cod = json["cod"] as? String, cod != "200" {
+                        let weather = Weather(
+                            country: "N/A",
+                            city: "Not Found",
+                            condition: "N/A",
+                            temperature: 0.0,
+                            temp_min: 0.0,
+                            temp_max: 0.0,
+                            pressure: 0.0,
+                            humidity: 0.0,
+                            visibility: 0.0,
+                            wind: 0.0,
+                            seaLevel: 0.0
+                        )
+                        completion(weather)
+                        return
+                    }
                     // Extract required data from JSON
                     if let main = json["main"] as? [String: Any],
                        let weatherArray = json["weather"] as? [[String: Any]],

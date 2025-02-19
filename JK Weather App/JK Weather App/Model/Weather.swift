@@ -23,16 +23,28 @@ struct Weather: Identifiable {
     
     var conditionIcon: String {
         switch condition.lowercased() {
+        case "clear sky":
+            return "sun.max.fill"
         case "clear":
             return "sun.max.fill"
+        case "few clouds":
+            return "cloud.fill"
         case "clouds":
+            return "cloud.fill"
+        case "broken clouds":
+            return "cloud.fill"
+        case "overcast clouds":
+            return "cloud.fill"
+        case "scattered clouds":
             return "cloud.fill"
         case "rain":
             return "cloud.rain.fill"
-        case "thunderstorm":
+        case "thunder storm":
             return "cloud.bolt.fill"
         case "snow":
             return "snow"
+        case "haze":
+            return "cloud.fog.fill"
         default:
             return "questionmark.circle"
         }

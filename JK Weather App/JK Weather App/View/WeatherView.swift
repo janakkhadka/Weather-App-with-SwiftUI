@@ -9,10 +9,8 @@ import SwiftUI
 
 struct WeatherView: View {
     @StateObject private var viewModel = WeatherViewModel()
-    
-    @State private var isSearching: Bool = false
-    @State private var searchTextField: String = ""
-    @State private var searchText: String = "Kathmandu, Nepal"
+
+    @State private var searchText: String = "Kathmandu"
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,6 +18,16 @@ struct WeatherView: View {
                 VStack {
                     //top ko card
                     WeatherCard(viewModel: viewModel, geometry: geometry)
+                    
+                    HStack{
+                        Text("Weather Status")
+                            .font(.system(size: 28, weight: .bold))
+                            .padding(.top, 30)
+                            .padding(.leading)
+                            .padding(.bottom, 10)
+                        Spacer()
+                    }
+                    
                     
                     // talako baki info/stats
                     WeatherStats(viewModel: viewModel)
@@ -29,7 +37,7 @@ struct WeatherView: View {
         }
         .edgesIgnoringSafeArea(.top)
         .onAppear {
-            viewModel.fetchWeather(for: searchText)
+            viewModel.fetchWeather(for: searchText) //suruma load huda ko l lagi
         }
     }
 }
@@ -39,7 +47,7 @@ struct WeatherCard: View {
     @ObservedObject var viewModel: WeatherViewModel
     let geometry: GeometryProxy
     @State private var searchTextField: String = ""
-    @State private var searchText: String = "Kathmandu, Nepal"
+    @State private var searchText: String = "Kathmandu"
     @State private var isSearching: Bool = false
     
     var body: some View {
@@ -52,7 +60,6 @@ struct WeatherCard: View {
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .overlay(
                         VStack {
-                            // Current Weather Header
                             HStack {
                                 Text("RIGHT NOW")
                                     .font(.system(size: 18, weight: .bold))
@@ -61,7 +68,8 @@ struct WeatherCard: View {
                             }
                             .padding(.top)
                             
-                            // Temperature and Condition
+                            Spacer()
+                            
                             HStack {
                                 VStack(alignment: .leading) {
                                     if let weather = viewModel.weather {
@@ -80,10 +88,10 @@ struct WeatherCard: View {
                                 
                                 Spacer()
                                 
-                                // Weather Icon
+                                //condition anusarko icon
                                 if let weather = viewModel.weather {
                                     Image(systemName: weather.conditionIcon)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(weather.conditionIcon == "sun.max.fill" ? .yellow : .white)
                                         .font(.system(size: 68, weight: .bold))
                                         .padding(.trailing)
                                 }
@@ -113,11 +121,13 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             if !isSearching {
-                Text("\(searchText)")
-                    .font(.system(size: 20, weight: .bold))
-                    .padding(.leading)
-                    .opacity(0.6)
-                    .frame(height: 40)
+                if let country = viewModel.weather?.country {
+                    Text("\(viewModel.weather?.city ?? searchText), \(country)")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.leading)
+                        .opacity(0.6)
+                        .frame(height: 40)
+                }
             } else {
                 TextField("Search a location...", text: $searchTextField)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -196,12 +206,12 @@ struct WeatherStats: View {
                 WeatherStatRow(icon: "arrow.down", label: "PRESSURE", value: "\(viewModel.weather?.pressure ?? 0) hPa")
                 Divider()
                 WeatherStatRow(icon: "eye", label: "VISIBILITY", value: "\((viewModel.weather?.visibility ?? 0) / 1000) km")
-                Divider()
             }
             .padding(.horizontal)
-            .background(.white)
+            
         }
         .padding(.top)
+        .background(.white)
     }
 }
 
@@ -216,10 +226,11 @@ struct WeatherStatRow: View {
             HStack {
                 Image(systemName: icon)
                     .font(.system(size: 25))
+                    .frame(width: 40)
                 
                 Text(label)
                     .font(.system(size: 20, weight: .bold))
-                    .padding(.leading)
+                    .padding(.leading, 5)
             }
             .padding(.horizontal, 10)
             
