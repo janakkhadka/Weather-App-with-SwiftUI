@@ -77,7 +77,7 @@ struct ContentView: View {
                                                     .opacity(0.6)
                                                     .frame(height: 40)
                                             } else {
-                                                TextField("Type a message...", text: $searchTextField)
+                                                TextField("Search a location...", text: $searchTextField)
                                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                                     .padding()
                                                     .background(.opacity(0))
@@ -118,6 +118,7 @@ struct ContentView: View {
                             Text("58\u{00B0}F")
                                 .font(.system(size: 55, weight: .bold))
                                 .padding(.leading)
+//                                .foregroundColor(Color(red: 138/255,green: 43/255, blue: 226/255))
                             
                             Spacer()
                             
@@ -148,10 +149,33 @@ struct ContentView: View {
                         
                         //arko section suru
                         VStack{
+                            Divider()
+                            HStack {
+                                HStack {
+                                    Image(systemName: "mount")
+                                        .font(.system(size:25))
+                                        .padding(.horizontal, 5)
+                                    
+                                    Text("SEA LEVEL")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(.leading)
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                Spacer()
+                                
+                                Text("50\u{00B0}")
+                                    .font(.system(size: 15, weight: .bold))
+                                    .opacity(0.8)
+                            }
+                            .padding(.vertical, 10)
+                            
+                            Divider()
+                            
                             HStack {
                                 HStack {
                                     Image(systemName: "wind")
-                                        .font(.system(size:34, weight: .bold))
+                                        .font(.system(size:30))
                                     
                                     Text("WIND")
                                         .font(.system(size: 20, weight: .bold))
@@ -172,7 +196,7 @@ struct ContentView: View {
                             HStack {
                                 HStack {
                                     Image(systemName: "humidity")
-                                        .font(.system(size:30, weight: .bold))
+                                        .font(.system(size:28))
                                     
                                     Text("HUMIDITY")
                                         .font(.system(size: 20, weight: .bold))
@@ -192,30 +216,8 @@ struct ContentView: View {
                             
                             HStack {
                                 HStack {
-                                    Image(systemName: "drop")
-                                        .font(.system(size:25, weight: .bold))
-                                        .padding(.horizontal, 5)
-                                    
-                                    Text("DEW POINT")
-                                        .font(.system(size: 20, weight: .bold))
-                                        .padding(.leading)
-                                }
-                                .padding(.horizontal, 10)
-                                
-                                Spacer()
-                                
-                                Text("50\u{00B0}")
-                                    .font(.system(size: 15, weight: .bold))
-                                    .opacity(0.8)
-                            }
-                            .padding(.vertical, 10)
-                            
-                            Divider()
-                            
-                            HStack {
-                                HStack {
                                     Image(systemName: "arrow.down")
-                                        .font(.system(size:28, weight: .bold))
+                                        .font(.system(size:28))
                                         .padding(.horizontal, 3)
                                     
                                     Text("PRESSURE")
@@ -237,7 +239,7 @@ struct ContentView: View {
                             HStack {
                                 HStack {
                                     Image(systemName: "eye")
-                                        .font(.system(size:23, weight: .bold))
+                                        .font(.system(size:23))
                                     
                                     Text("VISIBILITY")
                                         .font(.system(size: 20, weight: .bold))

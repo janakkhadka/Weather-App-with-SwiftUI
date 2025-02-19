@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9DC92F6E2D64E8FD00156187 /* JK Weather App */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "JK Weather App";
-			sourceTree = "<group>";
-		};
 		9DC92F7F2D64E90000156187 /* JK Weather AppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "JK Weather AppTests";
@@ -43,6 +38,11 @@
 		9DC92F892D64E90000156187 /* JK Weather AppUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "JK Weather AppUITests";
+			sourceTree = "<group>";
+		};
+		9DC92FAC2D65A4DD00156187 /* JK Weather App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "JK Weather App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,10 +75,10 @@
 		9DC92F632D64E8FD00156187 = {
 			isa = PBXGroup;
 			children = (
-				9DC92F6E2D64E8FD00156187 /* JK Weather App */,
 				9DC92F7F2D64E90000156187 /* JK Weather AppTests */,
 				9DC92F892D64E90000156187 /* JK Weather AppUITests */,
 				9DC92F6D2D64E8FD00156187 /* Products */,
+				9DC92FAC2D65A4DD00156187 /* JK Weather App */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,7 +108,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9DC92F6E2D64E8FD00156187 /* JK Weather App */,
+				9DC92FAC2D65A4DD00156187 /* JK Weather App */,
 			);
 			name = "JK Weather App";
 			packageProductDependencies = (
