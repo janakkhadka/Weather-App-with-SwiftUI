@@ -20,4 +20,21 @@ struct Weather: Identifiable {
     let visibility: Double
     let wind: Double
     let seaLevel: Double
+    
+    var conditionIcon: String {
+        switch condition.lowercased() {
+        case "clear":
+            return "sun.max.fill"
+        case "clouds":
+            return "cloud.fill"
+        case "rain":
+            return "cloud.rain.fill"
+        case "thunderstorm":
+            return "cloud.bolt.fill"
+        case "snow":
+            return "snow"
+        default:
+            return "questionmark.circle"
+        }
+    }
 }
