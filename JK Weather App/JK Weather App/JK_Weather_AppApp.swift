@@ -11,7 +11,7 @@ import SwiftUI
 struct JK_Weather_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WeatherView()
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  WeatherView.swift
 //  JK Weather App
 //
 //  Created by Janak Khadka on 18/02/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WeatherView: View {
     @State private var isSearching: Bool = false
     @State private var searchTextField: String = ""
     @State private var searchText: String = "Kathmandu, Nepal"
@@ -272,5 +272,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    WeatherView()
 }

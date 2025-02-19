@@ -19,5 +19,5 @@ struct Weather: Identifiable {
     let humidity: Double
     let visibility: Double
     let wind: Double
-    let dew: Double
+    let seaLevel: Double
 }
