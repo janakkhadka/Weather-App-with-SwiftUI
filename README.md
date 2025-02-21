@@ -9,6 +9,8 @@ An elegant and efficient **iOS weather app** built with **Swift** and **SwiftUI*
 - **Weather Forecast**: Displays current weather conditions and forecasts.
 - **User-Friendly UI**: Clean and intuitive interface.
 
+![Screenshot 2](images/main.png) 
+
 ## API Used
 - **[OpenWeatherMap](https://openweathermap.org/)** - Provides real-time weather data.
 
