@@ -15,7 +15,7 @@ An elegant and efficient **iOS weather app** built with **Swift** and **SwiftUI*
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/jk-weather-app.git
+   git clone https://github.com/janakkhadka/Weather-App-with-SwiftUI
    ```
 2. Open the project in Xcode.
 3. Build and run on a simulator or a physical device.
